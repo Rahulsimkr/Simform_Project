@@ -7,9 +7,7 @@ class Faculty < ApplicationRecord
     validates :email, uniqueness: true
     validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, unless: Proc.new { |a| a.email.blank? }
     validate :desgination_of_faculty
-    require "date"
     validates :birth_date, comparison: { less_than: Date.today, message: "can't be in future" }
-    #   validates :designation, inclusion: { in: %w(Ass.Prof Prof), message: "%{value} is not valid designation" }, exclusion: { in: %w(HOD Sr.Prof), message: "%{value} is reserved." }
     def desgination_of_faculty
       if (designation == "Ass. Prof" || designation == "Prof")
       elsif (designation == "HOD" || designation == "Sr. Prof.")
@@ -19,4 +17,5 @@ class Faculty < ApplicationRecord
       end
     end
   end
+  
   
