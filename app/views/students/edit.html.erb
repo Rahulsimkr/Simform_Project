@@ -1,0 +1,30 @@
+<h1>Editing Student Details</h1>
+
+<%= form_for @student do |form| %>
+ <div>
+    <%= form.label :first_name, style: "display: block" %>
+    <%= form.text_field :first_name %>
+  </div>
+
+<div>
+    <%= form.label :last_name, style: "display: block" %>
+    <%= form.text_field :last_name %>
+  </div>
+<div>
+    <%= form.label :DOB, style: "display: block" %>
+    <%= form.date_field :DOB %>
+  </div>
+<div>
+    <%= form.label :department, style: "display: block" %>
+    <%= form.text_field :department %>
+  </div>
+<div>
+    <%= form.label :Terms_Of_Condition, style: "display: block" %>
+    <%= form.check_box :Terms_Of_Condition %>
+  </div>
+
+ <div>
+    <%= form.submit %>
+  </div>
+
+<%end%>

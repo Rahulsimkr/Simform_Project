@@ -1,0 +1,30 @@
+
+  
+<h1> Student Details </h1>
+<table border=" solid 3px ">
+<tr>
+<th>First_name</th>
+<th>Last_name</th>
+<th>DOB</th>
+<th>Department</th>
+<th>Terms Of Condition</th>
+
+</tr>
+ <% @students.each do |student| %>
+<tr>
+<td><%=student.first_name %></td>
+<td><%=student.last_name %></td>
+<td><%=student.DOB %></td>
+<td><%=student.department %></td>
+<td><%=student.Terms_Of_Condition %></td>
+ <td><%= link_to "Edit Student", edit_student_path(id: student.id) %></td>
+<td><%= link_to "Show student", student_path(id: student.id) %></td>
+<td><%= button_to "Destroy student",student_path(id: student.id),
+            method: 'delete' ,
+            data:{ confirm: "are you sure"}%></td>
+
+</tr>
+
+<% end %>
+</table>
+ <%= link_to "Add a new Student", new_student_path %>
