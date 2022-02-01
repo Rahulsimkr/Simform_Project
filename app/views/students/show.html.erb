@@ -1,28 +1,33 @@
-<h1>Student</h1>
-<div id="">
-  <p>
-    <strong>First Name:</strong>
-    <%= @student.first_name %>
-  </p>
+<head>
+    <style>
+    body{
+        text-align:center;
+    }
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding:10px;
+        text-align:center;
+      }
+    </style>
+</head>
+<body>
+<center>
+    <h1>Student </h1>
 
-    <p>
-    <strong>Last Name:</strong>
-    <%= @student.last_name %>
-  </p>
+    <table>
 
-  <p>
-    <strong>DOB:</strong>
-    <%= @student.DOB %>
-  </p>
+        <tr><td>Student first_name</td><td>Student last_name</td>
+        <td>Student birth date</td><td>Student department</td><td>Edit</td><td>Delete</td></tr>
+        <tr>
+        <td><%=@student.first_name%></td>
+        <td><%=@student.last_name%></td>
+        <td><%=@student.birth_date%></td>
+        <td><%=@student.department%></td>
+        <td><%= button_to 'Edit', edit_student_path(@student), method: 'get'%></td>
+        <td><%= button_to 'Remove', student_path(@student), method: 'delete' %></td>  
+        </tr>
 
-  <p>
-    <strong>Department:</strong>
-    <%= @student.department %>
-  </p>
-
-  <p>
-    <strong>Terms Of Condition</strong>
-    <%= @student.Terms_Of_Condition %>
-  </p>
-
-</div>
+    </table>
+</center>
+</body> 

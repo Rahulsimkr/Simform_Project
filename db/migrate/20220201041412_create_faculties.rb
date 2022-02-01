@@ -3,7 +3,7 @@ class CreateFaculties < ActiveRecord::Migration[7.0]
     create_table :faculties do |t|
       t.string :first_name
       t.string :last_name
-      t.datetime :DOB
+      t.datetime :birth_date
       t.integer :phone_number
       t.string :email
       t.string :designation

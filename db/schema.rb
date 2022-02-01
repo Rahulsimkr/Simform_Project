@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2022_02_01_041412) do
   create_table "faculties", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.datetime "DOB", precision: 6
+    t.datetime "birth_date", precision: 6
     t.integer "phone_number"
     t.string "email"
     t.string "designation"
@@ -26,11 +26,11 @@ ActiveRecord::Schema.define(version: 2022_02_01_041412) do
   create_table "students", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.datetime "DOB", precision: 6
-    t.string "department"
+    t.datetime "birth_date", precision: 6
+    t.boolean "department"
+    t.boolean "terms_of_usage"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "Terms_Of_Condition"
   end
-  add_foreign_key "students", "faculties"
+
 end

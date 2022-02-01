@@ -3,8 +3,9 @@ class CreateStudents < ActiveRecord::Migration[7.0]
     create_table :students do |t|
       t.string :first_name
       t.string :last_name
-      t.datetime :DOB
+      t.datetime :birth_date
       t.boolean :department
+      t.boolean :terms_of_usage
 
       t.timestamps
     end

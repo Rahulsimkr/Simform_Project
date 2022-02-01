@@ -14,11 +14,12 @@ class FacultiesController < ApplicationController
   end
 
   def create
-    f= Faculty.create(faculty_params)
-    if f.valid?
+    # binding.pry
+    faculty= Faculty.create(faculty_params)
+    if faculty.valid?
       redirect_to faculties_path
     else
-      flash[:errors] = f.errors.full_messages
+      flash[:errors] = faculty.errors.full_messages
       redirect_to new_faculty_path
     end
   end

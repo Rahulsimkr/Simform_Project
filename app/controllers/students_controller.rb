@@ -8,11 +8,11 @@ class StudentsController < ApplicationController
     end
   
     def create
-      s= Student.create(student_params)
-      if s.valid?
+      student= Student.create(student_params)
+      if student.valid?
         redirect_to students_path
       else
-        flash[:errors] = s.errors.full_messages
+        flash[:errors] = student.errors.full_messages
         redirect_to new_student_path
       end
     end
