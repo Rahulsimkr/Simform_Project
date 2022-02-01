@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_01_041412) do
+ActiveRecord::Schema.define(version: 2022_02_01_101300) do
 
   create_table "faculties", force: :cascade do |t|
     t.string "first_name"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2022_02_01_041412) do
     t.string "first_name"
     t.string "last_name"
     t.datetime "birth_date", precision: 6
-    t.boolean "department"
+    t.string "department"
     t.boolean "terms_of_usage"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -31,11 +31,17 @@
 
     <div>
       <%= form.label :department %><br>
-      <%= form.text_field :department %>
+      <%= form.text_field :department %>&nbsp; Only (IT / CE)
       <% @student.errors.full_messages_for(:department).each do |message| %>
          <div><%= message %></div>
     <% end %>
     </div>
+    
+    <div>
+      <%= form.check_box :terms_of_usage, {}, true, false %>
+      <%= form.label "I agree to the terms of usage." %>       
+    </div> 
+
     <div>
       <%= form.submit %>
     </div>

@@ -11,3 +11,4 @@ class FacultyTest < ActiveSupport::TestCase
   #   assert true
   # end
 end
+

@@ -8,6 +8,7 @@ class StudentsController < ApplicationController
     end
   
     def create
+      # binding.pry
       student= Student.create(student_params)
       if student.valid?
         redirect_to students_path
@@ -47,3 +48,4 @@ class StudentsController < ApplicationController
       params.require(:student).permit(:first_name, :last_name, :birth_date, :department,:terms_of_usage)
     end
   end
+  
