@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
     def index
-      @students=Student.all
+      @students = Student.all
     end
   
     def new
@@ -9,7 +9,7 @@ class StudentsController < ApplicationController
   
     def create
       # binding.pry
-      student= Student.create(student_params)
+      student = Student.create(student_params)
       if student.valid?
         redirect_to students_path
       else
@@ -48,4 +48,5 @@ class StudentsController < ApplicationController
       params.require(:student).permit(:first_name, :last_name, :birth_date, :department,:terms_of_usage)
     end
   end 
+
   

@@ -11,6 +11,7 @@ class FacultiesController < ApplicationController
   def create
     faculty= Faculty.create(faculty_params)
     if faculty.valid?
+      flash[:notice] = "Faculty is successfully added."
       redirect_to faculties_path
     else
       flash[:errors] = faculty.errors.full_messages
@@ -37,6 +38,7 @@ class FacultiesController < ApplicationController
     redirect_to faculties_path
   end
   def faculty_params
-    params.require(:faculty).permit(:first_name, :last_name, :birth_date, :designation,:email,:phone_number)
+    params.require(:faculty).permit(:first_name, :last_name, :birth_date, :designation,:email, :phone_number, :username)
   end
 end
+
