@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 2022_02_07_131148) do
     t.string "first_name"
     t.string "last_name"
     t.integer "age"
-    t.integer "email"
+    t.string "email"
     t.integer "no_of_order"
-    t.string "full_time_available"
+    t.boolean "full_time_available"
     t.integer "salary"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

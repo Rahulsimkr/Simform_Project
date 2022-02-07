@@ -1,0 +1,28 @@
+<center>
+
+    <h1>Employee Details</h1><br>
+    <h2><%= @employee.first_name %> <%= @employee.last_name %></h2><br>
+<table>
+
+    <th>First_name</th>
+    <th>Last_name</th>
+    <th>Email</th>
+    <th>Age</th>
+    <th>No_of_order</th>
+    <th>Full_time_avilable</th>
+    <th>Salary</th>
+    <th colspan="3">Actions</th>
+        <tr>
+            <td><%= @employee.first_name %></td>
+            <td><%= @employee.last_name %></td>
+            <td><%= @employee.email %></td>
+            <td><%= @employee.age %></td>
+            <td><%= @employee.no_of_order %></td>
+            <td><%= @employee.full_time_available %></td>
+            <td><%= @employee.salary %></td>
+            <td><%= button_to "Edit", edit_employee_path(@employee), method: :get %></td>
+            <td><%= button_to "Delete", employee_path(@employee), method: :delete %></td>
+            <td><%= button_to "Back", employees_path, method: :get %></td>
+        </tr>
+</table>
+</center>
