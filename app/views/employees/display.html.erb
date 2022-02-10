@@ -1,6 +1,5 @@
 <center>
 <table>
-
 <h2>List employees having age > 20 and < 40</h2>
     <th>First_name</th>
     <th>Last_name</th>
@@ -9,27 +8,22 @@
     <th>No_of_order</th>
     <th>Full_time_available</th>
     <th>Salary</th>
-    <th colspan='6' align="center" >Actions</th>
-    
+    <th colspan='6' align="center" >Actions</th>   
      <% @employee_age_bewteen_twenty_and_fourty.each do |employee| %>
         <tr>
             <td><%= employee.first_name %></td>
             <td><%= employee.last_name %></td>
             <td><%= employee.age %></td>
             <td><%= employee.email %></td>
-            <td><%= employee.no_of_order %></td>
-            
+            <td><%= employee.no_of_order %></td>        
             <td><%= employee.full_time_available %></td>
-            <td><%= employee.salary %></td>
-         
+            <td><%= employee.salary %></td>         
         </tr>
     <% end %>
 </center>
 </table>
-
 <center>
 <table>
-
 <h2>List employees which are full_time_available</h2>
     <th>First_name</th>
     <th>Last_name</th>
@@ -46,22 +40,15 @@
             <td><%= employee.last_name %></td>
             <td><%= employee.age %></td>
             <td><%= employee.email %></td>
-            <td><%= employee.no_of_order %></td>
-            
+            <td><%= employee.no_of_order %></td>           
             <td><%= employee.full_time_available %></td>
-            <td><%= employee.salary %></td>
-         
+            <td><%= employee.salary %></td>     
         </tr>
     <% end %>
 </center>
 </table>
-
-
-
-
 <center>
-<table>
-   
+<table>  
 <h2> List employees which have exact 5 number of orders and age > 25</h2>
     <th>First_name</th>
     <th>Last_name</th>
@@ -70,9 +57,7 @@
     <th>No_of_order</th>
     <th>Full_time_available</th>
     <th>Salary</th>
-    <th colspan='6' align="center" >Actions</th>
-
-     
+    <th colspan='6' align="center" >Actions</th>     
     <% @employee_having_no_of_order_five.each do |employee| %>
         <tr>
             <td><%= employee.first_name %></td>
@@ -87,9 +72,7 @@
 </table>
 </center>
 <h2> List employees which are created before today </h2>
-
 <table>
-
     <th>First_name</th>
     <th>Last_name</th>
     <th>Email</th>
@@ -98,8 +81,7 @@
     <th>Full_time_available</th>
     <th>Salary</th>
     <th colspan='6' align="center" >Actions</th>
-
-<% @employee_created_one_day_ago.each do |employee| %>
+      <% @employee_created_one_day_ago.each do |employee| %>
         <tr>
             <td><%= employee.first_name %></td>
             <td><%= employee.last_name %></td>
@@ -111,11 +93,8 @@
         </tr>
     <% end %>
 </table>
-
 <h2>List employees which have exact 5 number of orders Or age < 25</h2>
-
 <table>
-
     <th>First_name</th>
     <th>Last_name</th>
     <th>Email</th>
@@ -124,8 +103,7 @@
     <th>Full_time_available</th>
     <th>Salary</th>
     <th colspan='6' align="center" >Actions</th>
-
-<% @employee_order_no_five_and_age_less_than_twentyfive.each do |employee| %>
+      <% @employee_order_no_five_and_age_less_than_twentyfive.each do |employee| %>
         <tr>
             <td><%= employee.first_name %></td>
             <td><%= employee.last_name %></td>
@@ -137,11 +115,8 @@
         </tr>
     <% end %>
 </table>
-
 <h2> List employees in descending order by age</h2>
-
 <table>
-
     <th>First_name</th>
     <th>Last_name</th>
     <th>Email</th>
@@ -149,8 +124,7 @@
     <th>No_of_order</th>
     <th>Full_time_available</th>
     <th>Salary</th>
-
-<% @employee_age_in_descending_order.each do |employee| %>
+      <% @employee_age_in_descending_order.each do |employee| %>
         <tr>
             <td><%= employee.first_name %></td>
             <td><%= employee.last_name %></td>
@@ -162,11 +136,8 @@
         </tr>
     <% end %>
 </table>
-
 <h2> List employees in ascending order by number of order </h2>
-
 <table>
-
     <th>First_name</th>
     <th>Last_name</th>
     <th>Email</th>
@@ -175,7 +146,7 @@
     <th>Full_time_available</th>
     <th>Salary</th>
     <th colspan='6' align="center" >Actions</th> 
-<% @employee_NoOfOrder_in_descending_order.each do |employee| %>
+    <% @employee_NoOfOrder_in_descending_order.each do |employee| %>
         <tr>
             <td><%= employee.first_name %></td>
             <td><%= employee.last_name %></td>
@@ -187,11 +158,8 @@
         </tr>
     <% end %>
 </table>
-
 <h2> List employees having salary > 45000 </h2>
-
 <table>
-
     <th>First_name</th>
     <th>Last_name</th>
     <th>Email</th>
@@ -200,7 +168,7 @@
     <th>Full_time_available</th>
     <th>Salary</th>
     <th colspan='6' align="center" >Actions</th>
-<% @employee_salary_greater_than_fourtyfive.each do |employee| %>
+      <% @employee_salary_greater_than_fourtyfive.each do |employee| %>
         <tr>
             <td><%= employee.first_name %></td>
             <td><%= employee.last_name %></td>
@@ -212,11 +180,8 @@
         </tr>
     <% end %>
 </table>
-
 <h2> Group employees by no_of_order with them and display employees with no_of_order > 5 </h2>
-
 <table>
-
     <th>First_name</th>
     <th>Last_name</th>
     <th>Email</th>
@@ -225,8 +190,7 @@
     <th>Full_time_available</th>
     <th>Salary</th>
     <th colspan='6' align="center" >Actions</th>
-
-<% @employee_NoOfOrder_greater_than_five.each do |employee| %>
+      <% @employee_NoOfOrder_greater_than_five.each do |employee| %>
         <tr>
             <td><%= employee.first_name %></td>
             <td><%= employee.last_name %></td>
@@ -238,12 +202,9 @@
         </tr>
     <% end %>
 </table>
-
 <h2> Write example for keywords unscope, only, reselect, reorder, reverse_order</h2>
 <h3>1) Example for unscope</h3>
-
 <table>
-
     <th>First_name</th>
     <th>Last_name</th>
     <th>Email</th>
@@ -252,7 +213,7 @@
     <th>Full_time_available</th>
     <th>Salary</th>
     <th colspan='6' align="center" >Actions</th>
-<% @employee_limit_five_NoOfOrder.each do |employee| %>
+      <% @employee_limit_five_NoOfOrder.each do |employee| %>
         <tr>
             <td><%= employee.first_name %></td>
             <td><%= employee.last_name %></td>
@@ -264,11 +225,8 @@
         </tr>
     <% end %>
 </table>
-
 <h3>2) Example for no of order gretaer than 5 and limit five</h3>
-
 <table>
-
     <th>First_name</th>
     <th>Last_name</th>
     <th>Email</th>
@@ -277,7 +235,7 @@
     <th>Full_time_avilable</th>
     <th>Salary</th>
     <th colspan='6' align="center" >Actions</th>
-<% @employee_limit_five.each do |employee| %>
+      <% @employee_limit_five.each do |employee| %>
         <tr>
             <td><%= employee.first_name %></td>
             <td><%= employee.last_name %></td>
@@ -289,25 +247,18 @@
         </tr>
     <% end %>
 </table>
-
 <h3>3) Example for reselect email only</h3>
-
 <table>
-
     <th>Email</th>
     <th colspan='6' align="center" >Actions</th>
-
         <% @employee_select_firstname_only.each do |employee| %>
         <tr>
             <td><%= employee.email %></td>
         </tr>
     <% end %>
 </table>
-
 <h3>5) Example for age decending and make it reversereverse_order</h3>
-
 <table>
-
     <th>First_name</th>
     <th>Last_name</th>
     <th>Email</th>
@@ -328,11 +279,8 @@
         </tr>
     <% end %>
 </table>
-
 <h3>4) Example for reorder</h3>
-
 <table>
-
     <th>First_name</th>
     <th>Last_name</th>
     <th>Email</th>
@@ -341,7 +289,7 @@
     <th>Full_time_available</th>
     <th>Salary</th>
     <th colspan='6' align="center" >Actions</th>
-<% @employee_reorder.each do |employee| %>
+      <% @employee_reorder.each do |employee| %>
         <tr>
             <td><%= employee.first_name %></td>
             <td><%= employee.last_name %></td>

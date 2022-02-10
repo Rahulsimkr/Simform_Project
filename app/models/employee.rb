@@ -35,9 +35,7 @@ class Employee < ApplicationRecord
         end
       end
     end
-  
     Employee.transaction do
       employee = Employee.lock.find_by(first_name: "Rahul")
     end
-    
   end

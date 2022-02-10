@@ -2,14 +2,12 @@ class EmployeesController < ApplicationController
   before_action :create_employee, only: [:show, :edit, :update, :destroy]
   def index
     @employees=Employee.all
-      # @employees=Employee.where.not(last_name: "person").limit(1)
       if params[:search]
         if Employee.find_by("email = ?",params[:search])
           flash[:notice]="Email is present"
           redirect_to employees_path
         else
           flash[:notice]="Email is not present"
-        
         end
       end
   end
@@ -68,8 +66,7 @@ class EmployeesController < ApplicationController
     @employee_select_firstname_only = Employee.select(:first_name).reselect(:email)
     @employee_reverse_descending_order = Employee.order("age desc").reverse_order
     @employee_reorder = Employee.order("age desc").reorder("age asc")
-  end
-  
+  end  
   private
   def employee_params
     params.require(:employee).permit(:first_name, :last_name, :email, :age, :no_of_order, :full_time_available, :salary)
