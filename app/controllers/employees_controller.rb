@@ -12,9 +12,6 @@ class EmployeesController < ApplicationController
       end
   end
 
-  def save 
-    puts :email
-  end
   def show
     @employee = Employee.find_by_id(params[:id])
   end
@@ -52,17 +49,17 @@ class EmployeesController < ApplicationController
   end
 
   def display
-    @employee_age_bewteen_twenty_and_fourty = Employee.where("age > 20").and(Employee.where("age < 40"))
+    @employee_age_bewteen_twenty_and_fourty = Employee.where('age > 20 and age < 40')
     @employee_full_time_available = Employee.where("full_time_available=true")
-    @employee_having_no_of_order_five = Employee.where("no_of_order=5").and(Employee.where("age > 25"))
+    @employee_having_no_of_order_five = Employee.where('no_of_order=5 and age>25')
     @employee_created_one_day_ago = Employee.where("created_at < ?", 1.days.ago)
-    @employee_order_no_five_and_age_less_than_twentyfive = Employee.where("no_of_order=5").or(Employee.where("age < 25"))
+    @employee_order_no_five_and_age_less_than_twentyfive = Employee.where('no_of_order=5 and age<25')
     @employee_age_in_descending_order = Employee.order("age desc")
     @employee_NoOfOrder_in_descending_order = Employee.order("no_of_order asc")
     @employee_salary_greater_than_fourtyfive = Employee.where("salary > 45000")
     @employee_NoOfOrder_greater_than_five = Employee.where("no_of_order > 5").group(:no_of_order)
-    @employee_limit_five_NoOfOrder = Employee.where("no_of_order > 5").limit(5).unscope(:limit)
-    @employee_limit_five = Employee.where("no_of_order > 5").limit(5).only(:where)
+    @employee_limit_five_NoOfOrder = Employee.where("no_of_order > 5").limit(5)
+    @employee_limit_five = Employee.where("no_of_order > 5").limit(5)
     @employee_select_firstname_only = Employee.select(:first_name).reselect(:email)
     @employee_reverse_descending_order = Employee.order("age desc").reverse_order
     @employee_reorder = Employee.order("age desc").reorder("age asc")
