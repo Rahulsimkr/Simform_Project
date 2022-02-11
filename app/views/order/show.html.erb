@@ -1,0 +1,64 @@
+<p style="color: green"><%= notice %></p>
+<div>
+  <h4 style="color:blue;">  Details of customer </h4>
+	<p>
+	  <strong>First Name:</strong>
+		<%= @order.customer.fname %>
+	</p>
+	<p>
+	  <strong>Last Name:</strong>
+		<%=@order.customer.lname %>
+	</p>
+	<p>
+	  <strong>Email:</strong>
+		<%=@order.customer.phone_number%>
+	</p>
+	<p>
+	  <strong>Phone Number</p>
+		<%= @order.customer.phone_name %>
+	</p>
+	<h4 style="color:green;">Detail of Product</h4>
+	<p>
+	  <strong>Product Name</strong>
+		<%= @order.product.name %>
+	</p>
+	<p>
+    <strong>Product Price:</strong>
+		<%= @order.product.price %>
+	</p>
+	<p>
+	  <strong>Product Status:</strong>
+    <%= @order.product.status%>
+	</p>
+	<h4 style="color:blue;"> Order Details</h4>
+	<p>
+	  <strong>Quantity:</strong>
+    <%= @order.quantity %>
+	</p>
+
+	<p>
+	  <strong>Total Price</strong>
+		<%= @order.total_price %>
+	</p>
+	<p>
+	  <strong>Status:</strong>
+		<%=  @order.status %>
+	</p>
+</div>
+<div>
+  <%= link_to "Editor this order", edit_order_path(@order) %> </br></br>
+	<%= link_to "Back to orders", @orders_path %></br></br>
+	<%= button_to "Destroy this Order", @order, method: :delete %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
