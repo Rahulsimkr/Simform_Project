@@ -1,0 +1,27 @@
+<h1>Customer Details</h1>
+
+<p style="color: green"><%= notice %></p>
+<div>
+  <p>
+    <strong>First Name:</strong>
+    <%= @customer.fname %>
+  </p>
+  <p>
+    <strong>Last Name:</strong>
+    <%= @customer.lname %>
+  </p>
+  <p>
+    <strong>Email:</strong>
+    <%= @customer.email%>
+  </p>
+  <p>
+    <strong>Phone Number:</strong>
+    <%= @customer.phone_number %>
+  </p>
+</div>
+<div>
+  <%= link_to "Edit this customer", edit_customer_path(@customer) %><br/> <br/>
+  <%= link_to "Back to customers", customers_path %><br/><br/>
+
+  <%= button_to "Destroy this Customer", @customer, method: :delete %>
+</div>

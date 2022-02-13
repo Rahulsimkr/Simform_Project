@@ -1,0 +1,30 @@
+<head><center>
+  <title> List of Customer </title> </center>
+</head>
+<body>
+  <table class="table table-striped">
+	  <tr><center> Customerrs Details</center></tr>
+		<tr class="table table-dark">
+		<td>ID</td>
+		<td>First Name</td>
+		<td>Last Name</td>
+		<td>show</td>
+		<td>Edit</td>
+		<td>Delete</td>
+	  </tr>
+
+		<% @customers.each do |customer|%>
+		  <tr>
+			  <td><%= customer.id %></td>
+				<td><%= customer.fname %></td>
+				<td><%= customer.lname %></td>
+				<td><%= button_to 'show', customer_path(s), method: 'get', class:"btn btn-info" %></td>
+				<td><%= button_to 'Edit', edit_cutomer_path(s), method: 'get', class:"btn btn-dark" %></td>
+				<td class=""><%= button_to 'Delete', customer_path(s), method: 'delete', class:"btn btn-danger" %></td>
+				</tr>
+
+			<% end %>
+		</table>
+		<%= link_to "Add a New Customer", new_customer_path %></br>
+	</body>
+</html>
