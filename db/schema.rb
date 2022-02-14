@@ -74,5 +74,7 @@ ActiveRecord::Schema.define(version: 2022_02_11_092720) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
+   
+  add_foreign_key "orders", "customers"
+  add_foreign_key "orders", "products"
 end

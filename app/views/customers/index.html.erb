@@ -1,30 +1,24 @@
-<head><center>
-  <title> List of Customer </title> </center>
-</head>
-<body>
-  <table class="table table-striped">
-	  <tr><center> Customerrs Details</center></tr>
-		<tr class="table table-dark">
-		<td>ID</td>
-		<td>First Name</td>
-		<td>Last Name</td>
-		<td>show</td>
-		<td>Edit</td>
-		<td>Delete</td>
-	  </tr>
 
-		<% @customers.each do |customer|%>
-		  <tr>
-			  <td><%= customer.id %></td>
-				<td><%= customer.fname %></td>
-				<td><%= customer.lname %></td>
-				<td><%= button_to 'show', customer_path(s), method: 'get', class:"btn btn-info" %></td>
-				<td><%= button_to 'Edit', edit_cutomer_path(s), method: 'get', class:"btn btn-dark" %></td>
-				<td class=""><%= button_to 'Delete', customer_path(s), method: 'delete', class:"btn btn-danger" %></td>
-				</tr>
+<center>
+    <h1>Customer Listing </h1>
 
-			<% end %>
-		</table>
-		<%= link_to "Add a New Customer", new_customer_path %></br>
-	</body>
-</html>
+    <table> 
+        <th>Full Name</th>
+        <th colspan='3'>Actions</th>
+        <% @customers.each do |customer| %>
+    <tr>
+        <td><%= customer.fname + " " + customer.lname %></td>
+        <td><%= button_to "Show", customer_path(customer), method: :get%></td>
+        <td><%= button_to "Edit", edit_customer_path(customer), method: :get%></td>
+        <td><%= button_to "Delete", customer_path(customer), method: :delete%></td>
+    </tr>
+    <% end %>
+    </table>
+</center>
+
+<center>
+    <div>
+        <%= link_to "new customer", new_customer_path, method: :get %>
+    </div>
+
+</center>

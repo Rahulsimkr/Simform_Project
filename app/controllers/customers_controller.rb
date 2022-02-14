@@ -1,14 +1,12 @@
 class CustomersController < ApplicationController
+  before_action :create_customer, only: %i[show edit update destroy]
+
   def index
-    @customer = Customer.all
+    @customers = Customer.all
   end
 
   def show
-    @customer =  Customer.all
-  end
-
-  def edit
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find_by_id(params[:id])
   end
 
   def new
@@ -16,44 +14,41 @@ class CustomersController < ApplicationController
   end
 
   def create
-    @customer= Customer.find(customer_params)
-
-    rsepond_to do |format|
-      if @customer.save
-        format.html { redirect_to customert_url(@customer), notice: "Customer  successfully created." }
-        format.json { render :show, status: :created, location: @customer }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
-      end
+    @customer = Customer.create(input_params)
+    if @customer.save
+      flash[:notice] = "Customer is successfully created"
+      redirect_to customers_path
+    else
+      render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    # binding.pry
   end
 
   def update
-    @customer =  Customer.find(params[:id])
-    respond_to do |format|
-      if @customer.update(customer_params)
-        format.html { redirect_to customer_url(@customer), notice: "Customer successfully updated" }
-        format.json { render :show, status: :ok, location: @customer }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
-      end
+    if @customer.update(input_params)
+      flash[:notice] = "Customer is successfully edited"
+      redirect_to customers_path
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
-   
-  def destroy
-    @customer =  Customer.find(params[:id])
-    @customer.destroy
 
-    respond_to do |format|
-      format.html { redirect_t0 customer_url, notice: "Customer destroyed Succesfully"}
-      format.json { header :no_content }
-    end
+  def destroy
+    @customer.destroy
+    redirect_to customers_path
   end
 
   private
-    def customer_params
-      params.require(:customer).permit(:fname, :lname, :email, :phone_number)
-    end
+
+  def input_params
+    params.require(:customer).permit(:fname, :lname, :email, :phone_number)
+  end
+
+  def create_customer
+    @customer = Customer.find_by_id(params[:id])
+    # @order = Order.find(id:params[:id])
+  end
 end

@@ -11,12 +11,11 @@
   </head>
 
   <body><center>
-    <%
-=begin%>
- <h1 style="color:red"ni> Advance-active-record-query-interface-pratical</h1> </center> 
-<%
-=end%>
+ 
    <div class="container">
+   <% flash.each do |name, message| %>
+   <% message %>
+   <% end %>
    <br/>
     <%= yield %>
    </div>
