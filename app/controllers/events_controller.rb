@@ -2,15 +2,21 @@ class EventsController < ApplicationController
   before_action :make_event, only: [:show, :edit, :update, :destroy]
   
   def index
-    @events =  Events.all
+    @events =  Event.all
   end
 
   def new
-    # @event = Event.new
+    # @event = Events.new
+    # if @events.new
+    #   redirect_to events_path
+    # else
+    #   render :new, status: :unprocessable_entity
+    # end
   end
 
   def show
-    # @event = Event.find_by_id(params[:id])
+    @event = User.find_by_id(params[:id])
+    # @users = @event.users
   end
 
  
@@ -46,7 +52,7 @@ class EventsController < ApplicationController
   private
 
   def make_event
-    @event = Event.(params[:id])
+    @event = Events.find_by_id(params[:id])
   end
 
   def input_params 

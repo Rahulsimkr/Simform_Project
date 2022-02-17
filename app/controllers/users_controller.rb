@@ -13,9 +13,10 @@ class UsersController < ApplicationController
   end
 
   def create
+    # binding.pry
     @user = User.new(user_params)
     if @user.save
-      flash[:notice]="successfully signed up"
+      flash[:notice]="successfully signed up #{@user.username}"
       redirect_to users_path
     else
       render :new, status: :unprocessable_entity
@@ -35,7 +36,8 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to users_path
+      flash[:notice]="successfully deleted"
+      redirect_to users_path
   end
   private
   
@@ -44,6 +46,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username,:email,:password)
+    params.require(:user).permit(:username, :email, :password)
   end
 end

@@ -1,9 +1,9 @@
-<h1>Edit User</h1>
-
+<h1 class="text-center mt-4">Edit User</h1>
+<center>
 <%= form_with model: @user do |form| %>
-<div>
+<div class="col-10">
     <%= form.label :Username %></br>
-    <%= form.text_field :username %>
+    <%= form.text_field :username, placeholder: "Enter a username" %>
     <% @user.errors.full_messages_for(:username).each do |message| %>
         <div><%= message %></div>
     <% end %>
@@ -11,7 +11,7 @@
 
 <div>
     <%= form.label :Email %></br>
-    <%= form.email_field :email %>
+    <%= form.email_field :email,  placeholder: "Enter a username"%>
     <% @user.errors.full_messages_for(:email).each do |message| %>
         <div><%= message %></div>
     <% end %>
@@ -21,3 +21,4 @@
     <%= form.submit %>
 </div>
 <% end %>
+</center>

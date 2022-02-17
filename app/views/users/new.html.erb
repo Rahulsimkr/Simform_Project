@@ -1,9 +1,9 @@
-<h1>Sign Up</h1>
-
+<h1 class="text-center mt-4">Sign Up</h1>
+<center>
 <%= form_with model: @user do |form| %>
 <div>
-    <%= form.label :Username %></br>
-    <%= form.text_field :username %>
+    <%= form.label :Username, class: "col-2 col-form-label " %></br>
+    <%= form.text_field :username,  placeholder: "Enter a username" %>
     <% @user.errors.full_messages_for(:username).each do |message| %>
         <div><%= message %></div>
     <% end %>
@@ -11,7 +11,7 @@
 
 <div>
     <%= form.label :Email %></br>
-    <%= form.email_field :email %>
+    <%= form.email_field :email, placeholder: "Enter a email"  %>
     <% @user.errors.full_messages_for(:email).each do |message| %>
         <div><%= message %></div>
     <% end %>
@@ -19,13 +19,14 @@
 
 <div>
     <%= form.label :Password %></br>
-    <%= form.password_field :password %>
+    <%= form.password_field :password, placeholder: "Enter a password" %>
     <% @user.errors.full_messages_for(:password).each do |message| %>
         <div><%= message %></div>
     <% end %>
 </div>
 
 <div>
-    <%= form.submit "Sign up"%>
+    <%= form.submit "Sign up", class: "btn btn-outline-dark btn-sm" %>
 </div>
 <% end %>
+</center>

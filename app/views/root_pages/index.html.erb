@@ -1,0 +1,29 @@
+<center>
+<div>
+  <%= link_to "New User signup", signup_path, method: :get %>
+</div>
+</center>
+
+<center>
+  <div>
+	  <%= link_to "login", login_path, method: :get %>
+	</div>
+</center>
+
+<center>
+  <h2> Event List </h2>
+	<table>
+	  <th>Event Name</th>
+		<th>Event Description</th>
+		<th>Event Date</th>
+		<th>Created By</th>
+		<% @events.each do |event| %>
+		<tr>
+		  <td><%= event.name %></td>
+			<td><%= event.description %></td>
+			<td><%= event.user.username if event.user %></td>
+		</tr>
+		<% end %>
+	</table>
+</center>
+	

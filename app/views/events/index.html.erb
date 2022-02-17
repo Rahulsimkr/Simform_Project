@@ -1,5 +1,5 @@
  
-<h1 class="center">Event Listing</h1>
+<h1 class="text-center mt-4">Event Listing</h1>
 
 <center>
     <div>
@@ -10,10 +10,10 @@
             <% @events.each do |event| %>
             <tr>
                 <td><%= event.name %></td>
-                <td><%= event.user.username if event.user %></td>
-                <td><%= button_to "Show",event_path(event),method: :get %></td>
-                <td><%= button_to "Edit",edit_event_path(event),method: :get %></td>
-                <td><%= button_to "Delete",event_path(event),method: :delete %></td>
+                <td><%= event.username if event.user %></td>
+                <td><%= button_to "Show",event_path(event),method: :get, class: "btn btn-outline-info"  %></td>
+                <td><%= button_to "Edit",edit_event_path(event),method: :get, class: "btn btn-outline-success" %></td>
+                <td><%= button_to "Delete",event_path(event),method: :delete,  class: "btn btn-outline-danger"  %></td>
             </tr>
             <% end %>
         </table>
