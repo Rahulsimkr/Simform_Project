@@ -19,13 +19,13 @@
 
  table, th, td{
 
-    border: 2px solid rgb(8, 13, 15);
+    border: 2px solid rgb(27, 10, 36);
     border-collapse: collapse;
     padding: 5px;
     border-radius: 5px;
-    background-color:rgb(200, 228, 228);
+    background-color:rgb(233, 172, 93);
  }
 
  body {
-    background-color: rgb(198, 230, 241);
+    background-color: rgb(204, 183, 211);
   }

@@ -2,18 +2,29 @@
 <h1 class="text-center mt-4">Event Listing</h1>
 
 <center>
+<%= link_to "Profile Page", events_profile_path, method: :post %>
+<p>............................................................................</p>
+</center>
+<center>
     <div>
         <table> 
-            <th>Event Name</th>
-            <th>Created User's Username</th>
-            <th colspan=3>Actions</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Event_date</th>
+              <th>Category</th>
+             
+              <th>Username</th>
+              <th>Show</th>
+
             <% @events.each do |event| %>
             <tr>
-                <td><%= event.name %></td>
-                <td><%= event.username if event.user %></td>
-                <td><%= button_to "Show",event_path(event),method: :get, class: "btn btn-outline-info"  %></td>
-                <td><%= button_to "Edit",edit_event_path(event),method: :get, class: "btn btn-outline-success" %></td>
-                <td><%= button_to "Delete",event_path(event),method: :delete,  class: "btn btn-outline-danger"  %></td>
+              <td><%= event.name %></td>
+              <td><%= event.description %></td>
+              <td><%= event.event_date %></td>
+              <td><%= event.category.category %></td>
+             
+              <td><%= event.user.username %></td>
+              <td><%= button_to "Show", event_path(event), method: :get,class:"btn btn-info" %></td>
             </tr>
             <% end %>
         </table>
@@ -28,6 +39,12 @@
 
 <center>
 <div>
-    <%= link_to "Logout", root_path, method: :delete %>
+    <%= link_to "Logout", root_path, method: :delete, class: "btn btn-danger btn-sm  mb-3" %>
+</div>
+</center>
+
+<center>
+<div>
+    <%= link_to "Enroll_event", users_register_event_path, method: :get, class: "btn btn-primary btn-sm  mb-3"  %>
 </div>
 </center>

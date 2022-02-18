@@ -1,32 +1,24 @@
 class EventsController < ApplicationController
-  before_action :make_event, only: [:show, :edit, :update, :destroy]
-  
-  def index
-    @events =  Event.all
-  end
+  before_action :find_event, only: [:show, :edit, :update, :destroy]
 
-  def new
-    # @event = Events.new
-    # if @events.new
-    #   redirect_to events_path
-    # else
-    #   render :new, status: :unprocessable_entity
-    # end
+  def index
+    @events = Event.all
   end
 
   def show
-    @event = User.find_by_id(params[:id])
-    # @users = @event.users
   end
 
- 
+
+  
+  def new
+    @event = Event.new
+  end
 
   def create
-    @event = Event.create(input_params)
-    @event.user = current_user 
+    @event = Event.create(event_params)
     if @event.save
-      flash[:notice] = "Event Successfully created by user"
-      redirect_to events_path 
+      flash[:notice] = "Event Suceesfully created"
+      redirect_to events_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,10 +26,15 @@ class EventsController < ApplicationController
 
   def edit
   end
+  def search
+    if params[:query].present?
+      @event_search = Event.where("category_id LIKE '%#{params[:query]}%'") 
+    end
+  end
 
   def update
-    if @event.update(input_params)
-      flash[:notice] = "Event is successfully updated by user"
+    if @event.update(event_params)
+      flash[:notice] = "Event Successfully edited"
       redirect_to events_path
     else
       render :edit, status: :unprocessable_entity
@@ -45,18 +42,28 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.destroy 
-    redirect_to customer_path
+    @event.destroy
+    redirect_to events_path
+  end
+
+  def profile
+    @user = current_user
+    @events = Event.all
+    @enroll_events = @user.enrollments.all
+  end
+
+  def add_comments
+    Event.find(params[:event_id]).comments.create("body" => params[:body])
+    redirect_to event_path(id: params[:event_id])
   end
 
   private
 
-  def make_event
-    @event = Events.find_by_id(params[:id])
+  def find_event
+    @event = Event.find_by_id(params[:id])
   end
 
-  def input_params 
-    params.require(:event).permit(:name, :description, :event_date)
+  def event_params
+    params.require(:event).permit(:name, :description, :event_date, :user_id, :category_id)
   end
-
 end

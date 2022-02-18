@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
-  before_action :create_user, only: [:show, :edit, :update, :destroy]
+  before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all
   end
 
   def show
+    # binding.pry
   end
 
   def new
@@ -16,9 +17,10 @@ class UsersController < ApplicationController
     # binding.pry
     @user = User.new(user_params)
     if @user.save
-      flash[:notice]="successfully signed up #{@user.username}"
+      flash[:notice]="Welcome to the Event Blog #{@user.username}, you have successfully signed up !!"
       redirect_to users_path
     else
+      flash[:alert] = "Something was wrong"
       render :new, status: :unprocessable_entity
     end
   end
@@ -28,7 +30,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to user_path
+      redirect_to users_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,12 +38,18 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-      flash[:notice]="successfully deleted"
-      redirect_to users_path
+    flash[:notice]="successfully deleted"
+    redirect_to users_path
   end
+
+  def register_event
+    @user = User.find_by(id: session[:user_id])
+    @enrollment = @user.enrollments.create()
+  end
+
   private
   
-  def create_user
+  def find_user
     @user = User.find_by_id(params[:id])
   end
 

@@ -1,14 +1,22 @@
-
+<div class="col-lg-16 mx-lg-auto p-5">
+<div class="card shadow">
+<div class="card-header">
 <center>
     <div>
+    <%#= gravatar_for @user, size: 80 %>
         <table> 
+            <th>User ID</th>
             <th>User Name</th>
             <th>User Email</th>
+            <th>User Password</th>
             <th colspan=3>Actions</th>
 
             <tr>
+             
+                <td><%= @user.id %></td>
                 <td><%= @user.username %></td>
                 <td><%= @user.email %></td>
+                <td><%= @user.password_digest %></td>
                 <td><%= button_to "Edit",edit_user_path(@user),method: :get %></td>
                 <td><%= button_to "Delete",user_path(@user),method: :delete %></td>
                 <td><%= button_to "Back",users_path,method: :get %></td>

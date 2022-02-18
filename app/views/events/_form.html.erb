@@ -1,34 +1,48 @@
- <%
-=begin%>
- <%= render 'shared/errors' %> 
-<%
-=end%>
+
+<div class="col-lg-6 mx-lg-auto">
+<div class="card shadow">
+<div class="card-header">
+<h2 class="card-title text-center", style="color:red;">New Event</h2>
+
 <%= form_with model: @event do |form| %>
+
 <div>
-    <%= form.label :Name %></br>
-    <%= form.text_field :name %>
-    <% @event.errors.full_messages_for(:name).each do |message| %>
-        <div><%= message %></div>
-    <% end %>
+  <%= form.label :name %></br>
+  <%= form.text_field :name,class: 'form-control' %>
+  <% @event.errors.full_messages_for(:name).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
 </div>
 
 <div>
-    <%= form.label :Description %></br>
-    <%= form.text_field :description %>
-    <% @event.errors.full_messages_for(:description).each do |message| %>
-        <div><%= message %></div>
-    <% end %>
+  <%= form.label :description  %></br>
+  <%= form.text_field :description,class: 'form-control' %>
+  <% @event.errors.full_messages_for(:description).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
 </div>
 
 <div>
-    <%= form.label :Event_date %></br>
-    <%= form.date_field :event_date %>
-    <% @event.errors.full_messages_for(:event_date).each do |message| %>
-        <div><%= message %></div>
-    <% end %>
+  <%= form.label :event_date %></br>
+  <%= form.date_field :event_date %>
+  <% @event.errors.full_messages_for(:event_date).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
 </div>
 
+
 <div>
-    <%= form.submit %>
+  <%= form.label :Category %></br>
+  <%= form.collection_select :category_id ,Category.order(:category), :id, :category %>
+</div>
+<div>
+  <%= form.number_field :user_id, value: current_user.id, type: :hidden %>
+</div>
+<div>
+<!--<div>
+    <%= form.label :category_id, style: "display: block" %>
+    <%= form.text_field :category_id %> 
+  </div>--> 
+  <%= form.submit %>
 </div>
 <% end %>

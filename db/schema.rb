@@ -10,14 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_17_132326) do
+ActiveRecord::Schema.define(version: 2022_02_24_125447) do
 
   create_table "addresses", force: :cascade do |t|
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "user_type"
+    t.integer "user_id"
+    t.index ["user_type", "user_id"], name: "index_addresses_on_user"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "categories", force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
+    t.string "commentable_type"
+    t.integer "commentable_id"
+    t.integer "user_id"
+    t.string "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -31,14 +45,28 @@ ActiveRecord::Schema.define(version: 2022_02_17_132326) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "emp_addresses", force: :cascade do |t|
+    t.string "quarter_number"
+    t.string "street_name"
+    t.string "sector"
+    t.string "city"
+    t.string "state"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "employee_id", null: false
+    t.index ["employee_id"], name: "index_emp_addresses_on_employee_id"
+  end
+
   create_table "employees", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.integer "age"
+    t.string "employee_name"
     t.string "email"
-    t.integer "no_of_order"
-    t.boolean "full_time_available"
-    t.integer "salary"
+    t.string "password"
+    t.date "birth_date"
+    t.string "gender"
+    t.string "hobbies"
+    t.string "address"
+    t.integer "mobile_number"
+    t.string "document"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -46,6 +74,10 @@ ActiveRecord::Schema.define(version: 2022_02_17_132326) do
   create_table "enrollments", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
+    t.integer "event_id", null: false
+    t.index ["event_id"], name: "index_enrollments_on_event_id"
+    t.index ["user_id"], name: "index_enrollments_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -54,17 +86,10 @@ ActiveRecord::Schema.define(version: 2022_02_17_132326) do
     t.date "event_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "faculties", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.datetime "birth_date", precision: 6
-    t.integer "phone_number"
-    t.string "email"
-    t.string "designation"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
+    t.integer "category_id", null: false
+    t.index ["category_id"], name: "index_events_on_category_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -88,22 +113,17 @@ ActiveRecord::Schema.define(version: 2022_02_17_132326) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "students", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.datetime "birth_date", precision: 6
-    t.string "department"
-    t.boolean "terms_of_usage"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
-    t.text "password"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "emp_addresses", "employees"
+  add_foreign_key "enrollments", "events"
+  add_foreign_key "enrollments", "users"
+  add_foreign_key "events", "categories"
+  add_foreign_key "events", "users"
 end
