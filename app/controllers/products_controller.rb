@@ -3,15 +3,14 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    
   end
 
   def default_scoped
-    @products = Product.all
+    @products = Product.unscoped
   end
 
   def show
-    @product = Product.find_by_id(params[:id])
+
   end
 
   def new
@@ -45,7 +44,7 @@ class ProductsController < ApplicationController
     @controller = Controller.find(params[:id])
     @controller.destroy
     params[:id] = nil
-    flash[:notice] = "Art has been deleted"
+    flash[:notice] = "Products has been deleted"
     redirect_to :action => :index
   end
 
@@ -56,6 +55,6 @@ class ProductsController < ApplicationController
   end
 
   def create_product
-    @product = Product.find(id:params[:id])
+    @product = Product.find_by_id(params[:id])
   end
 end

@@ -32,20 +32,6 @@ class OrdersController < ApplicationController
     end
   end
 
-#   def create
-#     @order = Order.new(input_params)
-
-#     respond_to do |format|
-#       if @board.save
-#         format.html { redirect_to @order, notice: 'Order was successfully created.' }
-#         format.json { render :show, status: :created, location: @order }
-#       else
-#         format.html { render :new }
-#         format.json { render json: @board.errors, status: :unprocessable_entity }
-#       end
-#     end
-# end
-
   def edit
   end
 

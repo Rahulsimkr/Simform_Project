@@ -49,6 +49,5 @@ class CustomersController < ApplicationController
 
   def create_customer
     @customer = Customer.find_by_id(params[:id])
-    # @order = Order.find(id:params[:id])
   end
 end
