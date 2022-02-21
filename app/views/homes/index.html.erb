@@ -16,7 +16,7 @@
   <thead>
     <center>
         <h2>most sales product by quantity</h2>
-        <% Order.select("customer_id, sum(quantity) as Sum_of_Quantity").group("customer_id").order("Sum_of_Quantity desc").first(3).each do |a| %>
+        <% @top_three_customer_by_sum_of_quantity.each do |a| %>
 
         <p>
             <strong> Sum of Quantity:</strong>
@@ -53,12 +53,12 @@
 <div>
     <center>
         <h2>most sales product by price</h2>
-        <% Order.select("customer_id, sum(total_price) as Sum_of_Price").group("customer_id").order("Sum_of_Price desc").first(3).each do |a| %>
+        <% @top_three_customer_by_sum_of_price.each do |a| %>
 
-        <p>
-            <strong> Sum of price:</strong>
-            <%= a.Sum_of_Price %>
-        </p>
+       <p>
+         <strong>Id:</strong>
+         <%= a.customer.id %>
+       </p>
 
         <p>
             <strong>First Name:</strong>
@@ -89,11 +89,11 @@
 <div>
     <center>
         <h2>Customer who most booked order of product</h2>
-        <% Order.group("customer_id").having(status:'booked').first(5).each do |a| %>
+        <% @top_five_customer_by_maximum_booked_order.each do |a| %>
 
         <p>
-            <strong> Total no of booked order:</strong>
-            <%= Order.where(customer_id:a.customer_id).where(status:'booked').count %>
+         <strong>Id:</strong>
+         <%= a.customer.id %>
         </p>
 
         <p>
@@ -125,12 +125,12 @@
 <div>
     <center>
         <h2>Customer who most cancelled order of product</h2>
-        <% Order.group("customer_id").having(status:'cancelled').first(5).each do |a| %>
+        <% @top_five_customer_by_maximum_canceled_order.each do |a| %>
 
         <p>
-            <strong> Total no of cancelled order:</strong>
-            <%= Order.where(customer_id:a.customer_id).where(status:'cancelled').count %>
-        </p>
+         <strong>Id:</strong>
+         <%= a.customer.id %>
+       </p>
 
         <p>
             <strong>First Name:</strong>

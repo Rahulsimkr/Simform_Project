@@ -2,7 +2,8 @@ class ProductsController < ApplicationController
   before_action :create_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.unscoped.all
+    @products = Product.all
+    
   end
 
   def default_scoped
