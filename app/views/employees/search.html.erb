@@ -1,0 +1,25 @@
+<center><h1>Generic Search Form</h1>
+<% if flash[:notice] %>
+  <% flash.each do |name,msg| %>
+    <h3 style= "color: blue;"><%= msg %></h3>
+  <% end %>
+<% end %>
+</center>
+<center>
+  <%= form_with url: "/search_employee", method: :get do |form| %>
+  <%= form.label :query, "Search by employee Id: "%></br>
+  <%=form.text_field :query, placeholder: 'Search by employee id'  %><br/>
+  <%= form.submit "Search" ,class:"btn btn-success mb-3 mt-4" %>
+  
+<% end %>
+<%
+=begin%>
+ 
+<% if @employee.try(:any?) %>
+<th><%= @employee.employee_name %></th>
+<th><%= @employee.birth_date %></th>
+
+<% end %> 
+<%
+=end%>
+</center>

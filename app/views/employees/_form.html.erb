@@ -1,0 +1,83 @@
+
+<div class="col-lg-6 mx-lg-auto">
+  <div class="card shadow">
+  <div class="card-header">
+  <h2 class="card-title text-center", style="color:red;">New Employee</h2>
+<%= form_with(model: @employee) do |form| %>
+<div >
+  <div class="mb-2" > 
+      <%= form.label :employee_name ,style: "display: block" %>
+      <%= form.text_field :employee_name ,class: 'form-control', placeholder: 'Enter your name' %>
+    </div>
+  
+    <div class= "mb-2">   
+      <%= form.label :email , style: "display: block"%>
+      <%= form.email_field :email, class: 'form-control' ,placeholder: 'abc@gmail.com' %>
+    </div>
+    
+    <div class="mb-2">
+      <%= form.label :password , style: "display: block" %>
+      <%= form.password_field :password, class: 'form-control', placeholder: '************'%>
+    </div>
+
+    <div class="mb-2">Gender: </br>
+      <%= form.radio_button :gender, "Male" %>
+      <%= form.label :gender_male, "Male" %>
+      <%= form.radio_button :gender, "Female" %>
+      <%= form.label :gender_female, "Female" %>  
+    </div>
+
+    <div class="mb-2">Hobbies: <br/>
+      <%= form.check_box :hobbies, {multiple: true}, "reading",false %>
+      <%= form.label "Gyming" %>
+      <%= form.check_box :hobbies, {multiple: true}, "playing",false %>
+      <%= form.label "playing" %>
+      <%= form.check_box :hobbies, {multiple: true}, "studying",false %>
+      <%= form.label "running" %>
+      <%= form.check_box :hobbies, {multiple: true}, "watching",false %>
+      <%= form.label "watching" %>
+    </div>
+
+    <div class="mb-2" >
+      <%= form.label :Full_address , style: "display: block"%>
+      <%= form.text_area :address , class: 'form-control', placeholder: 'Enter your Address'%><br/>
+      <% i=1 %>
+      <%= form.fields_for :emp_addresses do |add_form| %>
+        Address  <%=i%><% i+=1 %>:<br/>
+        <%= add_form.label :quarter_number , style: "display: block"%>
+        <%= add_form.text_field :quarter_number, class: 'form-control' %><br/>
+        <%= add_form.label :street_name , style: "display: block"%>
+        <%= add_form.text_field :street_name , class: 'form-control' %><br/>
+        <%= add_form.label :sector , style: "display: block"%>
+        <%= add_form.text_field :sector , class: 'form-control' %>
+				<%= add_form.label :city , style: "display: block"%>
+        <%= add_form.text_field :city , class: 'form-control' %>
+				<%= add_form.label :state , style: "display: block"%>
+        <%= add_form.text_field :state , class: 'form-control' %>
+      <% end %>
+    </div>
+
+    <div class="mb-2">
+      <%= form.label :mobile_number , style: "display: block" %>
+      <%= form.number_field :mobile_number, class: 'form-control',placeholder: '+91 123456789' %>
+    </div>
+    <div class=" mb-2">
+      <%= form.label :birth_date , style: "display: block"%>
+      <%= form.date_field :birth_date, class: 'form-control' %>
+    </div>
+    <div class=" mb-2">
+      <%= form.label :document , style: "display: block" %>
+      <%= form.file_field :document, class: 'form-control' %>
+    </div>
+  <div class="mb-2">
+    <%=form.submit%>
+  </div>
+</div>
+<% end %>
+<% if flash[:errors] %>
+    <ul>
+      <% flash[:errors].each do |error| %>
+        <li style="color:red;"><%= error %></li>
+      <% end %>
+    </ul>
+<% end %>
