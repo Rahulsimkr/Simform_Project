@@ -1,0 +1,161 @@
+<div class="center">
+
+    <h2>Products</h2>
+    <%= link_to "Products", products_path, method: :get %>
+
+    <h2>Customers</h2>
+    <%= link_to "Customers", customers_path, method: :get %>
+
+    <h2>Orders</h2>
+    <%= link_to "Orders", orders_path, method: :get %>
+
+</div>
+
+<div>
+<table class="table" >
+  <thead>
+    <center>
+        <h2>most sales product by quantity</h2>
+        <% @most_sales_product.each do |a| %>
+
+        <p>
+            <strong> Sum of Quantity:</strong>
+            <%= a.sum_of_Quantity %>
+        </p>
+
+        <p>
+            <strong>First Name:</strong>
+            <%= a.customer.fname %>
+        </p>
+
+        <p>
+            <strong>Last Name:</strong>
+            <%= a.customer.lname %>
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+            <%= a.customer.email%>
+        </p>
+
+        <p>
+            <strong>Phone Number:</strong>
+            <%= a.customer.phone_number %>
+        </p>
+        </br>
+
+        <% end %>
+        
+    </center>
+	</thead>
+</table>
+
+</div>
+
+<div>
+    <center>
+        <h2>most sales product by price</h2>
+        <% @top_three_customer_by_sum_of_price.each do |a| %>
+
+       <p>
+         <strong>Id:</strong>
+         <%= a.customer.id %>
+       </p>
+
+        <p>
+            <strong>First Name:</strong>
+            <%= a.customer.fname %>
+        </p>
+
+        <p>
+            <strong>Last Name:</strong>
+            <%= a.customer.lname %>
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+            <%= a.customer.email%>
+        </p>
+
+        <p>
+            <strong>Phone Number:</strong>
+            <%= a.customer.phone_number %>
+        </p>
+        </br>
+
+        <% end %>
+
+    </center>
+</div>
+
+<div>
+    <center>
+        <h2>Customer who most booked order of product</h2>
+        <% @top_five_customer_by_maximum_booked_order.each do |a| %>
+
+        <p>
+         <strong>Id:</strong>
+         <%= a.customer.id %>
+        </p>
+
+        <p>
+            <strong>First Name:</strong>
+            <%= a.customer.fname %>
+        </p>
+
+        <p>
+            <strong>Last Name:</strong>
+            <%= a.customer.lname %>
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+            <%= a.customer.email%>
+        </p>
+
+        <p>
+            <strong>Phone Number:</strong>
+            <%= a.customer.phone_number %>
+        </p>
+        </br>
+
+        <% end %>
+
+    </center>
+</div>
+
+<div>
+    <center>
+        <h2>Customer who most cancelled order of product</h2>
+        <% @top_five_customer_by_maximum_canceled_order.each do |a| %>
+
+        <p>
+         <strong>Id:</strong>
+         <%= a.customer.id %>
+       </p>
+
+        <p>
+            <strong>First Name:</strong>
+            <%= a.customer.fname %>
+        </p>
+
+        <p>
+            <strong>Last Name:</strong>
+            <%= a.customer.lname %>
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+            <%= a.customer.email%>
+        </p>
+
+        <p>
+            <strong>Phone Number:</strong>
+            <%= a.customer.phone_number %>
+        </p>
+        </br>
+
+        <% end %>
+
+    </center>
+</div>
