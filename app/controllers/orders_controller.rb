@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
  
-  before_action :create_order, only: [:show, :edit, :update, :destroy]
+  before_action :find_order, only: [:show, :edit, :update, :destroy]
   def index
     @orders = Order.all
     if params[:search]
@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:quantity, :total_price, :status, :product_id, :customer_id)
   end
 
-  def create_order
+  def find_order
     @order = Order.find_by_id(params[:id])
   end
 end

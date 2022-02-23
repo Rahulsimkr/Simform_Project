@@ -16,11 +16,11 @@
   <thead>
     <center>
         <h2>most sales product by quantity</h2>
-        <% @top_three_customer_by_sum_of_quantity.each do |a| %>
+        <% @most_sales_product.each do |a| %>
 
         <p>
             <strong> Sum of Quantity:</strong>
-            <%= a.Sum_of_Quantity %>
+            <%= a.sum_of_Quantity %>
         </p>
 
         <p>
@@ -46,8 +46,10 @@
 
         <% end %>
         
-    </center></thead>
-		</table>
+    </center>
+	</thead>
+</table>
+
 </div>
 
 <div>

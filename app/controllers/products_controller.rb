@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :create_product, only: [:show, :edit, :update, :destroy]
+  before_action :find_product, only: [:show, :edit, :update, :destroy]
 
   def index
     @products = Product.all
@@ -54,7 +54,7 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:title, :description, :price, :capacity, :is_active, :status)
   end
 
-  def create_product
+  def find_product
     @product = Product.find_by_id(params[:id])
   end
 end

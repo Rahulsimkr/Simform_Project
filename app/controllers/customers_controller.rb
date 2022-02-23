@@ -1,12 +1,11 @@
 class CustomersController < ApplicationController
-  before_action :create_customer, only: %i[show edit update destroy]
+  before_action :find_customer, only: %i[show edit update destroy]
 
   def index
     @customers = Customer.all
   end
 
   def show
-    @customer = Customer.find_by_id(params[:id])
   end
 
   def new
@@ -24,7 +23,6 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    # binding.pry
   end
 
   def update
@@ -47,7 +45,7 @@ class CustomersController < ApplicationController
     params.require(:customer).permit(:fname, :lname, :email, :phone_number)
   end
 
-  def create_customer
+  def find_customer
     @customer = Customer.find_by_id(params[:id])
   end
 end
