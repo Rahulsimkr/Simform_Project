@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quarter_number: MyString
+  street_name: MyString
+  sector: MyString
+  city: MyString
+  state: MyString
+
+two:
+  quarter_number: MyString
+  street_name: MyString
+  sector: MyString
+  city: MyString
+  state: MyString

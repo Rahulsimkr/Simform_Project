@@ -1,0 +1,35 @@
+<div class="col-lg-26 mx-lg-auto">
+<div class="card shadow">
+<div class="card-header">
+
+<% if flash[:notice] %>
+  <% flash.each do |name,msg| %>
+    <h3 style="color:green;"><%= msg %></h3>
+  <% end %>
+<% end %>
+  <table> 
+    <th>Employee ID</th>
+    <th>Employee Nameiption</th>
+    <th>Email</th>
+    <th>Gender</th>
+    <th>Hobbies</th>
+    <th>Adresses</th>
+    <th>Mobile Number</th>
+    <th>Date of Birth</th>
+    <th>Document</th>    
+    <th colspan=1 >Actions</th>
+    <tr>
+      <td><%= @employee.id %></td>
+      <td><%= @employee.employee_name %></td>
+      <td><%= @employee.email %></td>
+      <td><%= @employee.gender %></td>
+      <td><%= @employee.hobbies %></td>
+      <td><%= @employee.address %></td>
+      <td><%= @employee.mobile_number %></td>
+      <td><%= @employee.birth_date %></td>
+      <td><strong><%= @employee.document %></td></strong>          
+      <td><%= button_to "Edit", edit_employee_path(@employee), method: :get %></td>
+    </tr>
+  </table>
+  <%= link_to "Add a New Employee", new_employee_path, class: "btn btn-primary btn-sm mb-3 mt-5" %></br>
+  <%= button_to 'Home', employees_path, method: :get,class: "btn btn-primary btn-sm mt-4" %>

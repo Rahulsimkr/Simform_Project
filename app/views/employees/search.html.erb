@@ -1,0 +1,52 @@
+<div class="col-lg-8 mx-lg-auto">
+<div class="card shadow">
+<div class="card-header">
+<center> 
+<center><h1>Generic Search Form</h1>
+<% if flash[:notice] %>
+  <% flash.each do |name,msg| %>
+    <h3 style= "color: blue;"><%= msg %></h3>
+  <% end %>
+<% end %>
+</center>
+<center>
+  <%= form_with url: "/search_employee", method: :get do |form| %>
+  <%= form.label :query, "Search by employee Name: "%></br>
+  <%=form.text_field :query, placeholder: 'Search by employee name'  %><br/>
+  <%= form.submit "Search" ,class:"btn btn-success mb-3 mt-4" %> 
+<% end %>
+</center>
+<% if @employee_search.try(:any?)   %>
+       
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">D.O.B</th>
+      <th scope="col">Address</th>
+      <th scope="col">Hobbies</th>
+      <th scope="col">Gender</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @employee_search.each do |emp| %>
+    <tr>
+      <th > <%= emp.id  %> </th>
+      <td><%= emp.employee_name  %></td>
+      <td><%= emp.email  %></td>
+      <td><%= emp.mobile_number  %></td>
+      <td><%= emp.birth_date  %></td>
+      <td><%= emp.address  %></td>
+      <td><%= emp.hobbies  %></td>
+      <td><%= emp.gender  %></td>
+    </tr>
+   <% end %>
+  </tbody>
+</table>
+<% end %>
+<center>
+ <%= button_to 'Home', employees_path, method: :get,class: "btn btn-primary btn-sm mt-4" %>
+</center>
