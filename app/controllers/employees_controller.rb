@@ -1,20 +1,15 @@
 class EmployeesController < ApplicationController
   before_action :find_employee, only: %i[show edit update destroy]
-
   def index
     @employees = Employee.all
   end
 
-  def show
-    # @employee = Employee.find_by(id: params[:id])
-  end
-
-  def edit
+  def show  
   end
 
   def new
     @employee = Employee.new
-    3.times { @employee.emp_addresses.build }
+    4.times { @employee.emp_addresses.build }
   end
 
   def create 
@@ -29,11 +24,9 @@ class EmployeesController < ApplicationController
   end 
 
   def edit
-    # @employee =Employee.find(params[:id])
   end 
 
   def update 
-    @employee = Employee.find(params[:id])
     if @employee.update(employee_params)
       flash[:notice] = "Employee is successfully updated ."
       redirect_to employees_path
@@ -45,26 +38,15 @@ class EmployeesController < ApplicationController
 
   def destroy 
     @employee.destroy
-    
     flash[:notice] = "Employee has been deleted successfully"
     redirect_to employees_path
   end
 
   def search
     if params[:query].present?
-      redirect_to search_path if Employee.find(params[:query]).blank?
-      redirect_to employee_path(params[:query])
-      flash[:notice] = "Employee has been Searched successfully"
-      
-    end   
+      @employee_search = Employee.where("employee_name LIKE '%#{params[:query]}%'") 
+    end
   end
-    # if params[:query].present?
-    #   @employee = Employee.find(params[:query])
-    #   # binding.pry
-    #   render :search 
-    # end  
-  
-
   private 
 
   def employee_params

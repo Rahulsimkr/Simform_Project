@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   get 'employees/search'
   get "/search_employee", to: "employees#search"
   resources :employees
-  
   # get 'employees/search'
   # get 'index' => 'employees#index'
 
   # Defines the root path route ("/")
   # root "articles#index"
 end
+

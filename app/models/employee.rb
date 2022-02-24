@@ -5,4 +5,5 @@ class Employee < ApplicationRecord
   validates :address, length: { minimum: 10, maximum: 100 }
   has_many :emp_addresses, dependent: :destroy
   accepts_nested_attributes_for :emp_addresses
+
 end
