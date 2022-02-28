@@ -1,0 +1,48 @@
+
+<h1 class="text-center mt-4">Sign Up</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-3">
+    <% if @user.errors.any? %>
+      <div class= "alert alert-danger">
+        <% @user.errors.full_messages.each do |message| %>
+        <div><%= message %></div>
+      <% end %>
+      </div>
+    <% end %>
+<center>
+<%= form_with model: @user do |form| %>
+<div>
+    <%= form.label :username, class: "col-2 col-form-label " %></br>
+    <%= form.text_field :username,  class: "form-control shadow-sm rounded",  placeholder: "Enter a username" %>
+    <% @user.errors.full_messages_for(:username).each do |message| %>
+        <div><%= message %></div>
+    <% end %>
+</div>
+
+<div>
+    <%= form.label :email %></br>
+    <%= form.email_field :email, class: "form-control shadow-sm rounded", placeholder: "Enter a email"  %>
+    <% @user.errors.full_messages_for(:email).each do |message| %>
+        <div><%= message %></div>
+    <% end %>
+</div>
+
+<div>
+    <%= form.label :password %></br>
+    <%= form.password_field :password, class: "form-control shadow-sm rounded", placeholder: "Enter a password" %>
+    <% @user.errors.full_messages_for(:password).each do |message| %>
+        <div><%= message %></div>
+    <% end %>
+</div>
+
+
+
+<div>
+    <%= form.submit "Sign up", class: "btn btn-outline-dark btn-sm mt-3 mb-3" %>
+</div>
+<tr>
+   <td><b><%= link_to "Back", root_pages_path %></b></td>
+</tr>
+<% end %>
+</center>

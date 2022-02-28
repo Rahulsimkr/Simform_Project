@@ -1,0 +1,47 @@
+<div class="col-lg-14 mx-lg-auto p-5">
+<div class="card shadow">
+<div class="card-body p-5 ">
+<center> 
+<center><h1>Generic Search by category ID</h1>
+<% if flash[:notice] %>
+  <% flash.each do |name,msg| %>
+    <h3 style= "color: blue;"><%= msg %></h3>
+  <% end %>
+<% end %>
+</center>
+<center>
+  <%= form_with url: "/search_event", method: :get do |form| %>
+  <%= form.label :query, "Search by category id: "%></br>
+  <%=form.text_field :query, placeholder: 'Search by category id'  %><br/>
+  <%= form.submit "Search" ,class:"btn btn-success mb-3 mt-4" %> 
+<% end %>
+</center>
+<% if @event_search.try(:any?) %>
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Category Id</th>
+      <th scope="col">Event Category </th>
+      <th scope="col">Event envolved user<strong> name</strong></th>
+      <th scope="col">Event Description</th>
+      <th scope="col">Event date</th>
+      <th scope="col">User ID</th>s
+    </tr>
+  </thead>
+  <tbody>
+   <% @event_search.each do |eve| %>
+    <tr>
+      <th><%= eve.category.id %> </th>
+      <th><%= eve.category.category %> </th>
+			<th><%= eve.name %> </th>
+      <th><%= eve.description %> </th>
+      <th><%= eve.event_date %></th>
+      <th><%= eve.id %></th>
+    </tr>
+   <% end %>
+  </tbody>
+</table>
+<% end %>
+<center>
+ <%= button_to 'Home', root_pages_index_path, method: :get,class: "btn btn-primary btn-sm mt-4" %>
+</center>

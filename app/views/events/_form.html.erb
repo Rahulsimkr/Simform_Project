@@ -1,0 +1,46 @@
+
+<div class="col-lg-6 mx-lg-auto">
+<div class="card shadow">
+<div class="card-header">
+<h2 class="card-title text-center", style="color:red;">New Event</h2>
+
+<%= form_with model: @event do |form| %>
+
+<div>
+  <%= form.label :name %></br>
+  <%= form.text_field :name,class: 'form-control' %>
+  <% @event.errors.full_messages_for(:name).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+</div>
+
+<div>
+  <%= form.label :description  %></br>
+  <%= form.text_field :description,class: 'form-control' %>
+  <% @event.errors.full_messages_for(:description).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+</div>
+
+<div>
+  <%= form.label :event_date %></br>
+  <%= form.date_field :event_date %>
+  <% @event.errors.full_messages_for(:event_date).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+</div>
+
+
+<div>
+  <%= form.label :Category %></br>
+  <%= form.collection_select :category_id ,Category.order(:category), :id, :category %>
+</div>
+
+<div>
+  <%= form.number_field :user_id, value: current_user.id, type: :hidden %>
+</div>
+<div>
+
+  <%= form.submit %>
+</div>
+<% end %>

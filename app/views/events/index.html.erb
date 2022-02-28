@@ -1,0 +1,43 @@
+<h1 class="text-center mt-4">Event Listing</h1>
+<center>
+<%= link_to "Profile Page", events_profile_path, method: :post %>
+<p>............................................................................</p>
+</center>
+<center>
+    <div>
+        <table> 
+              <th>Name</th>
+              <th>Description</th>
+              <th>Event_date</th>
+              <th>Category</th>
+              <th>Show</th>
+            <% @events.each do |event| %>
+            <tr>
+              <td><%= event.name %></td>
+              <td><%= event.description %></td>
+              <td><%= event.event_date %></td>
+              <td><%= event.category.category %></td
+              <td><%= button_to "Show", event_path(event), method: :get,class:"btn btn-info" %></td>      
+            </tr>
+            <% end %>
+        </table>
+    </div>
+</center>
+
+<center>
+<div class="new">
+    <%= link_to "New Event", new_event_path, method: :get,  class: "btn btn-primary btn-sm  mb-3" %>
+</div>
+</center>
+
+<center>
+<div>
+    <%= link_to "Logout", root_path, method: :delete, class: "btn btn-danger btn-sm  mb-3" %>
+</div>
+</center>
+
+<center>
+<div>
+    <%= link_to "Enroll_event", enroll_events_path, method: :get, class: "btn btn-primary btn-sm  mb-3"  %>
+</div>
+</center>

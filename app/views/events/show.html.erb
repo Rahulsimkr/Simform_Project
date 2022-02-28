@@ -1,0 +1,46 @@
+<center>
+    <div>
+        <table> 
+            <th>Event Name</th>
+            <th>Event Description</th>
+            <th>Event Date</th>
+            <th>Event Category</th>
+            <th colspan=3>Actions</th>
+            <tr>              
+                <td><%= @event.name %></td>
+                <td><%= @event.description %></td>
+                <td><%= @event.event_date %></td>
+                <td><%= @event.category.category %></td>
+                <% if current_user && current_user.id == @event.user_id %>
+                <td><%= button_to "Edit",edit_event_path(@event),method: :get %></td>
+                <td><%= button_to "Delete",event_path(@event),method: :delete %></td>
+                <td><%= button_to "Back",events_path,method: :get %></td>
+                <% end %>
+            </tr>
+        </table>
+    </div>
+    <p>********************</p>
+</center>
+<center>
+  <div><strong>Add Your Comment: </strong>
+  <%= form_with(url: events_add_comments_path, method: :get) do |form| %>
+    <%= form.text_field :body ,  placeholder: " Add a comment"%><br/>
+    <%= form.hidden_field :event_id, value: @event.id %></br>
+    <%= form.submit "Add comment", class: "btn btn-secondary mt-3 mb-3"  %>
+  <% end %>
+  </div>
+</center>
+<center>
+    <div>
+        <table class="table">
+			<th> Comment ID</th>
+            <th>Event Comment List</th>s
+            <% @event.comments.each do |comment| %>
+            <tr>
+			        <td><%= comment.id %></td>
+              <td><%= comment.body %></td>						 
+            </tr>
+            <% end %>
+        </table>
+    </div>
+</center>
