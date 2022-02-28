@@ -10,15 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_24_125447) do
+ActiveRecord::Schema.define(version: 2022_02_28_093742) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "user_type"
-    t.integer "user_id"
-    t.index ["user_type", "user_id"], name: "index_addresses_on_user"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -80,6 +77,11 @@ ActiveRecord::Schema.define(version: 2022_02_24_125447) do
     t.index ["user_id"], name: "index_enrollments_on_user_id"
   end
 
+  create_table "enrollments_user", id: false, force: :cascade do |t|
+    t.integer "enrollment_id", null: false
+    t.integer "user_id", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -90,6 +92,28 @@ ActiveRecord::Schema.define(version: 2022_02_24_125447) do
     t.integer "category_id", null: false
     t.index ["category_id"], name: "index_events_on_category_id"
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "events_user", id: false, force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.integer "user_id", null: false
+  end
+
+  create_table "my_customers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.integer "phone_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "my_products", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.decimal "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -113,16 +137,23 @@ ActiveRecord::Schema.define(version: 2022_02_24_125447) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_addresses", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
-    t.string "password_digest"
+    t.text "password_digest"
+    t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "emp_addresses", "employees"
   add_foreign_key "enrollments", "events"
+  add_foreign_key "enrollments", "users"
   add_foreign_key "enrollments", "users"
   add_foreign_key "events", "categories"
   add_foreign_key "events", "users"

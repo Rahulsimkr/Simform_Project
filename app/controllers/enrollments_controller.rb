@@ -15,7 +15,6 @@ class EnrollmentsController < ApplicationController
     end
        
     private
-  
     def enrollment_params
       params.require(:enrollment).permit(:user_id, :event_id)
     end

@@ -1,15 +1,12 @@
 class EventsController < ApplicationController
-  before_action :find_event, only: [:show, :edit, :update, :destroy]
+  before_action :find_event, only: [:show, :update, :destroy]
 
   def index
     @events = Event.all
   end
 
   def show
-  end
-
-
-  
+  end 
   def new
     @event = Event.new
   end
@@ -25,6 +22,7 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @event = Event.find_by_id(params[:id])
   end
   def search
     if params[:query].present?
@@ -56,7 +54,19 @@ class EventsController < ApplicationController
     Event.find(params[:event_id]).comments.create("body" => params[:body])
     redirect_to event_path(id: params[:event_id])
   end
-
+  
+  def filter
+    if params[:q].blank?
+      flash[:errors]=""
+      return
+    else
+      category_id=params[:q][:category_id]
+      @events=Event.where(category_id: category_id)
+      if @events.blank?
+        flash.now[:alert] = "Event of this category not find"
+      end  
+    end
+  end  
   private
 
   def find_event
@@ -64,6 +74,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :description, :event_date, :user_id, :category_id)
+    params.require(:event).permit(:name, :description, :event_date, :user_id, :category)
   end
 end

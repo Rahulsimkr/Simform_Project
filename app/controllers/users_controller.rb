@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    # binding.pry
   end
 
   def new
@@ -14,7 +13,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    # binding.pry
     @user = User.new(user_params)
     if @user.save
       flash[:notice]="Welcome to the Event Blog #{@user.username}, you have successfully signed up !!"

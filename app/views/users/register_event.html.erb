@@ -1,12 +1,10 @@
 <center>
   <h1>Register in Event</h1>
-
   <%if flash[:errors] %>
     <% flash[:errors].each do |error| %>
       <p style = "color:red"><%= error %></p>
     <% end %>
-  <% end %>
-    
+  <% end %>  
   <%= form_for @enrollment do |enroll| %>
   <table>
     <tr>
@@ -19,7 +17,6 @@
     <tr>
       <td><%= enroll.submit %></td>
     </tr>
-
   </table>
   <% end %>
 </center>

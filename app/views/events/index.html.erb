@@ -1,6 +1,4 @@
- 
 <h1 class="text-center mt-4">Event Listing</h1>
-
 <center>
 <%= link_to "Profile Page", events_profile_path, method: :post %>
 <p>............................................................................</p>
@@ -12,19 +10,14 @@
               <th>Description</th>
               <th>Event_date</th>
               <th>Category</th>
-             
-              <th>Username</th>
               <th>Show</th>
-
             <% @events.each do |event| %>
             <tr>
               <td><%= event.name %></td>
               <td><%= event.description %></td>
               <td><%= event.event_date %></td>
-              <td><%= event.category.category %></td>
-             
-              <td><%= event.user.username %></td>
-              <td><%= button_to "Show", event_path(event), method: :get,class:"btn btn-info" %></td>
+              <td><%= event.category.category %></td
+              <td><%= button_to "Show", event_path(event), method: :get,class:"btn btn-info" %></td>      
             </tr>
             <% end %>
         </table>
@@ -45,6 +38,6 @@
 
 <center>
 <div>
-    <%= link_to "Enroll_event", users_register_event_path, method: :get, class: "btn btn-primary btn-sm  mb-3"  %>
+    <%= link_to "Enroll_event", enroll_events_path, method: :get, class: "btn btn-primary btn-sm  mb-3"  %>
 </div>
 </center>
