@@ -1,0 +1,50 @@
+<div class="center">
+    <h1>List of all Employee</h1>
+</div>
+<center>
+<table cellpadding = "15px">
+    <th>Search Employee:</th>
+    <th>Search</th>
+        <tr>      
+            <td><%= email_field_tag :search, params[:search] %></td>
+            <td><%= submit_tag "search" %></td>
+            <%= form_tag employees_path, method: :get do %>          
+        </tr>    
+</table>
+</center>
+<% end %>  
+<center>
+<table>
+    <th>First_name</th>
+    <th>Last_name</th>
+     <th>Age</th>
+    <th>Email</th>
+    <th>No_of_order</th>
+    <th>Full_time_available</th>
+    <th>Salary</th>
+    <th colspan='6' align="center" >Actions</th>
+
+    <% @employees.each do |employee| %>
+        <tr>
+            <td><%= employee.first_name %></td>
+            <td><%= employee.last_name %></td>
+            <td><%= employee.age %></td>
+            <td><%= employee.email %></td>
+            <td><%= employee.no_of_order %></td>
+            
+            <td><%= employee.full_time_available %></td>
+            <td><%= employee.salary %></td>
+            <td><%= button_to "Show", employee_path(employee), method: :get %></td>
+            <td><%= button_to "Edit", edit_employee_path(employee), method: :get %></td>
+            <td><%= button_to "Delete", employee_path(employee), method: :delete %></td>
+        </tr>
+    <% end %>
+</table>
+</center>
+    <p class="center">
+        <%= link_to "New employee", new_employee_path %>
+    </p>
+    <p class="center">
+        <%= link_to "Display Query", display_path, method: :get %>
+    </p>
+		
